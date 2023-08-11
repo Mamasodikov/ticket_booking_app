@@ -1,16 +1,20 @@
 # ticket_booking_app
 
-A new Flutter project.
+Name: Ticket Booking App (Android/iOS)
 
-## Getting Started
+For company TASK.
 
-This project is a starting point for a Flutter application.
+Features:
+- Create Events in many different topics 🎭🔊🧬⚖🔬
+- Sell Tickets for events 💲💸💹
+- Register for events of one's interest 🙌✨😮
+- Buy tickets ☑☑
 
-A few resources to get you started if this is your first Flutter project:
+![alt text](https://github.com/Mamasodikov/ticket_booking_app/blob/master/Screenshot_1691719040.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![alt text](https://github.com/Mamasodikov/ticket_booking_app/blob/master/Screenshot_1691719044.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![alt text](https://github.com/Mamasodikov/ticket_booking_app/blob/master/Screenshot_1691719073.png)
+
+![alt text](https://github.com/Mamasodikov/ticket_booking_app/blob/master/Screenshot_1691719092.png)
+  
