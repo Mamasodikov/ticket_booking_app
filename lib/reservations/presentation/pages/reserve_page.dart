@@ -12,6 +12,7 @@ import 'package:ticket_booking_app/auth/login/presentation/pages/login_page.dart
 import 'package:ticket_booking_app/core/di/dependency_injection.dart';
 import 'package:ticket_booking_app/core/utils/app_constants.dart';
 import 'package:ticket_booking_app/core/utils/string_enums.dart';
+import 'package:ticket_booking_app/core/widgets/alert_dialog.dart';
 import 'package:ticket_booking_app/core/widgets/custom_material_button.dart';
 import 'package:ticket_booking_app/reservations/data/models/reservation_model.dart';
 import 'package:ticket_booking_app/reservations/presentation/bloc/reserve_bloc.dart';
@@ -279,10 +280,15 @@ class _ReservesPageState extends State<ReservesPage> {
                                         SlidableAction(
                                           spacing: 1,
                                           flex: 1,
-                                          onPressed: (ctx) {
-                                            _reservesBloc.add(
-                                                DeleteReserveEvent(
-                                                    id: item.id));
+                                          onPressed: (ctx) async {
+                                            var result = await showAlertText(
+                                                    context, 'Are you sure?') ??
+                                                false;
+                                            if (result) {
+                                              _reservesBloc.add(
+                                                  DeleteReserveEvent(
+                                                      id: item.id));
+                                            }
                                           },
                                           backgroundColor: cBrownDark,
                                           foregroundColor: Colors.white,

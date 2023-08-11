@@ -13,6 +13,7 @@ import 'package:ticket_booking_app/auth/login/presentation/pages/login_page.dart
 import 'package:ticket_booking_app/core/di/dependency_injection.dart';
 import 'package:ticket_booking_app/core/utils/app_constants.dart';
 import 'package:ticket_booking_app/core/utils/string_enums.dart';
+import 'package:ticket_booking_app/core/widgets/alert_dialog.dart';
 import 'package:ticket_booking_app/core/widgets/custom_toast.dart';
 import 'package:ticket_booking_app/events/presentation/bloc/events_bloc.dart';
 import 'package:ticket_booking_app/events/presentation/pages/event_form.dart';
@@ -396,8 +397,14 @@ class _EventsPageState extends State<EventsPage> {
                                                   EventFormPage.screen(
                                                       eventModel: item)));
                                     },
-                                    onTapDelete: () {
-                                      _eventsBloc.add(DeleteEvent(event: item));
+                                    onTapDelete: () async {
+                                      var result = await showAlertText(
+                                          context, 'Are you sure?') ??
+                                          false;
+                                      if (result) {
+                                        _eventsBloc.add(DeleteEvent(event: item));
+                                      }
+
                                     },
                                   );
                                 },

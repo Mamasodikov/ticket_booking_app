@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -43,8 +45,7 @@ class _AccoutPageState extends State<AccoutPage> {
               child: CircleAvatar(
                 minRadius: 80,
                 maxRadius: 100,
-                backgroundImage:
-                NetworkImage(placeholderAvatar),
+                backgroundImage: NetworkImage(placeholderAvatar),
               ),
             ),
           ),
@@ -76,12 +77,7 @@ class _AccoutPageState extends State<AccoutPage> {
                 ),
                 CustomSolidButton(
                     onPressed: () {
-                      prefs.remove('token');
-                      prefs.remove('session');
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginPage.screen()),
-                      );
+                      logout();
                     },
                     color: cBrownDark,
                     width: double.infinity,
@@ -95,5 +91,61 @@ class _AccoutPageState extends State<AccoutPage> {
         ],
       ),
     );
+  }
+
+  logout() {
+    showDialog(
+        context: context,
+        builder: (_) => BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+              child: AlertDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.r)),
+                backgroundColor: cWhiteColor,
+                title: Text('Do u want to exit app?'),
+                content: Column(mainAxisSize: MainAxisSize.min, children: [
+                  Text(
+                    'Your data would not be deleted!',
+                    style: TextStyle(color: cRedColor),
+                  ),
+                ]),
+                actions: <Widget>[
+                  MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    elevation: 0,
+                    color: Colors.green.shade50,
+                    onPressed: () {
+                      Navigator.of(context).pop(false);
+                    },
+                    child: Text(
+                      NO,
+                      style: TextStyle(color: cGreenColor),
+                    ),
+                  ),
+                  MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    elevation: 0,
+                    color: Colors.red.shade50,
+                    onPressed: () async {
+                      ///Here is logging out
+                      prefs.remove('token');
+                      prefs.remove('session');
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginPage.screen()),
+                      );
+                    },
+                    child: Text(
+                      YES,
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+                ],
+                actionsPadding: const EdgeInsets.all(10),
+              ),
+            ));
   }
 }
