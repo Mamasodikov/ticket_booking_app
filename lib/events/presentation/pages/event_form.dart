@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -61,6 +62,7 @@ class _EventFormPageState extends State<EventFormPage> {
   DateTime selectedDate = DateTime.now();
   File? selectedImage;
   final ImagePicker picker = ImagePicker();
+  final DateFormat formatterDate = DateFormat('yyyy-MM-dd');
 
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
@@ -353,7 +355,7 @@ class _EventFormPageState extends State<EventFormPage> {
                               );
                             },
                             child: textField(
-                                placeholder: selectedDate.toString(),
+                                placeholder: formatterDate.format(selectedDate),
                                 title: 'Date & Time',
                                 isEditable: false,
                                 controller: TextEditingController()),

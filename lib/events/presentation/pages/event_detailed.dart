@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,6 +48,7 @@ class _EventDetailedPageState extends State<EventDetailedPage> {
   late EventsBloc _eventsBloc;
   SharedPreferences prefs = di();
   late OverlayState overlay;
+  final DateFormat formatterDate = DateFormat('yyyy-MM-dd');
 
   @override
   void initState() {
@@ -218,11 +220,15 @@ class _EventDetailedPageState extends State<EventDetailedPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  event.name.toString(),
-                                  style: TextStyle(
-                                      fontSize: 25.sp,
-                                      fontWeight: FontWeight.w600),
+                                Flexible(
+                                  child: Text(
+                                    event.name.toString(),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontSize: 25.sp,
+                                        fontWeight: FontWeight.w600),
+                                  ),
                                 ),
                                 Row(
                                   children: [
@@ -380,7 +386,7 @@ class _EventDetailedPageState extends State<EventDetailedPage> {
                             ),
                             Flexible(
                               child: Text(
-                                'Date: ${event.date}',
+                                'Date: ${formatterDate.format(DateTime.parse(event.date??'1970-00-00'))}',
                                 style: TextStyle(
                                     fontSize: 17.sp,
                                     fontWeight: FontWeight.w500),

@@ -114,6 +114,7 @@ class _ReserveItemState extends State<ReserveItem> {
                       SizedBox(width: 10.w),
                       RotatedBox(
                           quarterTurns: -1,
+
                           child: new Text(
                             'PAY',
                             style: TextStyle(

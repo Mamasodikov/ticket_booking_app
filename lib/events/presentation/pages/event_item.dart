@@ -33,7 +33,7 @@ class EventItem extends StatefulWidget {
 
 class _EventItemState extends State<EventItem> {
   final DateFormat formatterHour = DateFormat('HH:mm');
-  final DateFormat formatterDate = DateFormat('yyyy/MM/dd');
+  final DateFormat formatterDate = DateFormat('yyyy-MM-dd');
 
   @override
   Widget build(BuildContext context) {
@@ -92,10 +92,14 @@ class _EventItemState extends State<EventItem> {
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
                   child: Row(
                     children: [
-                      Text(
-                        widget.event.name.toString(),
-                        style: TextStyle(
-                            fontSize: 25.sp, fontWeight: FontWeight.w500),
+                      Flexible(
+                        child: Text(
+                          widget.event.name.toString(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 25.sp, fontWeight: FontWeight.w500),
+                        ),
                       )
                     ],
                   ),
@@ -200,7 +204,7 @@ class _EventItemState extends State<EventItem> {
                       ),
                       Flexible(
                         child: Text(
-                          'Date: ${widget.event.date}',
+                          'Date: ${formatterDate.format(DateTime.parse(widget.event.date ?? '1970-00-00'))}',
                           style: TextStyle(
                               fontSize: 17.sp, fontWeight: FontWeight.w500),
                         ),
