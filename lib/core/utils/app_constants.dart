@@ -84,9 +84,9 @@ const cFirstGradient = LinearGradient(
 );
 
 const cSecondGradient = LinearGradient(
-  colors: [Color(0xFF5E7988), Color(0xFF1091EF)],
-  begin: Alignment.centerLeft,
-  end: Alignment.centerRight,
+  colors: [Color(0xFF5E7988), Color(0xFF1E695A)],
+  begin: Alignment.topCenter,
+  end: Alignment.bottomCenter,
 );
 
 const cThirdGradient = LinearGradient(

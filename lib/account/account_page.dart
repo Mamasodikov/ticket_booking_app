@@ -34,7 +34,7 @@ class _AccoutPageState extends State<AccoutPage> {
       body: Column(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height / 3,
+            height: MediaQuery.of(context).size.height / 2.5,
             width: double.infinity,
             decoration: BoxDecoration(
                 color: cSecondColor,
@@ -42,10 +42,18 @@ class _AccoutPageState extends State<AccoutPage> {
                     bottomRight: Radius.circular(30.r),
                     bottomLeft: Radius.circular(30.r))),
             child: Center(
-              child: CircleAvatar(
-                minRadius: 80,
-                maxRadius: 100,
-                backgroundImage: NetworkImage(placeholderAvatar),
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    minRadius: 80,
+                    maxRadius: 100,
+                    backgroundImage: NetworkImage(placeholderAvatar),
+                  ),
+                  SizedBox(height: 20.h,),
+                  Text('Elon Musk',style: TextStyle(color: cWhiteColor, fontSize: 30.sp, fontWeight: FontWeight.w700),),
+                  SizedBox(height: 10.h,),
+                  Text('Account Balance: \$95.835',style: TextStyle(color: cWhiteColor, fontSize: 20.sp, fontWeight: FontWeight.w500),),
+                ],
               ),
             ),
           ),

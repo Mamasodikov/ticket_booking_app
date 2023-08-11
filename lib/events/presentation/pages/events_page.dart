@@ -136,279 +136,322 @@ class _EventsPageState extends State<EventsPage> {
             builder: (context, state) {
               print(state.runtimeType);
               if (state is EventsInitial) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                return Stack(
                   children: [
-                    SizedBox(
-                      height: 30.h,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              height: 60.h,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.r),
-                                  color: cWhiteColor.withAlpha(80)),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 20.w,
-                                  ),
-                                  Icon(
-                                    Icons.search,
-                                    color: cWhiteColor,
-                                  ),
-                                  SizedBox(
-                                    width: 20.w,
-                                  ),
-                                  Expanded(
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                          hintText: 'Search',
-                                          hintStyle:
-                                              TextStyle(color: cWhiteColor),
-                                          border: InputBorder.none),
-                                      style: TextStyle(color: cWhiteColor),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
                     Container(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 20.h, vertical: 5.w),
-                      padding: EdgeInsets.symmetric(vertical: 5.h),
-                      child: Text(
-                          'Last update: ' +
-                              "${prefs.getString(eventsTime) ?? "00-00-0000 00.00.00"}",
-                          style: TextStyle(color: cWhiteColor)),
-                      alignment: Alignment.center,
+                      height: 160.h,
+                      width: double.infinity,
                       decoration: BoxDecoration(
-                        color: cSecondColor,
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
+                          gradient: cSecondGradient,
+                          borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(30.r),
+                              bottomLeft: Radius.circular(30.r))),
+                      child: Container(),
                     ),
-                    SizedBox(
-                      height: 30.h,
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 30.h,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  height: 60.h,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20.r),
+                                      color: cWhiteColor.withAlpha(80)),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 20.w,
+                                      ),
+                                      Icon(
+                                        Icons.search,
+                                        color: cWhiteColor,
+                                      ),
+                                      SizedBox(
+                                        width: 20.w,
+                                      ),
+                                      Expanded(
+                                        child: TextField(
+                                          decoration: InputDecoration(
+                                              hintText: 'Search',
+                                              hintStyle:
+                                                  TextStyle(color: cWhiteColor),
+                                              border: InputBorder.none),
+                                          style: TextStyle(color: cWhiteColor),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 20.h, vertical: 5.w),
+                          padding: EdgeInsets.symmetric(vertical: 5.h),
+                          child: Text(
+                              'Last update: ' +
+                                  "${prefs.getString(eventsTime) ?? "00-00-0000 00.00.00"}",
+                              style: TextStyle(color: cWhiteColor)),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: cFirstColor,
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30.h,
+                        ),
+                        Expanded(
+                            child: Center(
+                          child: CupertinoActivityIndicator(
+                            color: cWhiteColor,
+                            radius: 20.r,
+                          ),
+                        ))
+                      ],
                     ),
-                    Expanded(
-                        child: Center(
-                      child: CupertinoActivityIndicator(
-                        color: cWhiteColor,
-                        radius: 20.r,
-                      ),
-                    ))
                   ],
                 );
               } else if (state is EventsLoading) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                return Stack(
                   children: [
-                    SizedBox(
-                      height: 30.h,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              height: 60.h,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.r),
-                                  color: cWhiteColor.withAlpha(80)),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 20.w,
-                                  ),
-                                  Icon(
-                                    Icons.search,
-                                    color: cWhiteColor,
-                                  ),
-                                  SizedBox(
-                                    width: 20.w,
-                                  ),
-                                  Expanded(
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                          hintText: 'Search',
-                                          hintStyle:
-                                              TextStyle(color: cWhiteColor),
-                                          border: InputBorder.none),
-                                      style: TextStyle(color: cWhiteColor),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
                     Container(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 20.h, vertical: 5.w),
-                      padding: EdgeInsets.symmetric(vertical: 5.h),
-                      child: Text(
-                          'Last update: ' +
-                              "${prefs.getString(eventsTime) ?? "00-00-0000 00.00.00"}",
-                          style: TextStyle(color: cWhiteColor)),
-                      alignment: Alignment.center,
+                      height: 160.h,
+                      width: double.infinity,
                       decoration: BoxDecoration(
-                        color: cSecondColor,
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
+                          gradient: cSecondGradient,
+                          borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(30.r),
+                              bottomLeft: Radius.circular(30.r))),
+                      child: Container(),
                     ),
-                    SizedBox(
-                      height: 30.h,
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 30.h,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  height: 60.h,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20.r),
+                                      color: cWhiteColor.withAlpha(80)),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 20.w,
+                                      ),
+                                      Icon(
+                                        Icons.search,
+                                        color: cWhiteColor,
+                                      ),
+                                      SizedBox(
+                                        width: 20.w,
+                                      ),
+                                      Expanded(
+                                        child: TextField(
+                                          decoration: InputDecoration(
+                                              hintText: 'Search',
+                                              hintStyle:
+                                                  TextStyle(color: cWhiteColor),
+                                              border: InputBorder.none),
+                                          style: TextStyle(color: cWhiteColor),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 20.h, vertical: 5.w),
+                          padding: EdgeInsets.symmetric(vertical: 5.h),
+                          child: Text(
+                              'Last update: ' +
+                                  "${prefs.getString(eventsTime) ?? "00-00-0000 00.00.00"}",
+                              style: TextStyle(color: cWhiteColor)),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: cFirstColor,
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30.h,
+                        ),
+                        Expanded(
+                            child: Center(
+                          child: CupertinoActivityIndicator(
+                            color: cWhiteColor,
+                            radius: 20.r,
+                          ),
+                        ))
+                      ],
                     ),
-                    Expanded(
-                        child: Center(
-                      child: CupertinoActivityIndicator(
-                        color: cWhiteColor,
-                        radius: 20.r,
-                      ),
-                    ))
                   ],
                 );
               } else if (state is GetEventsSuccess) {
                 if (state.resultList.isNotEmpty)
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  return Stack(
                     children: [
-                      SizedBox(
-                        height: 30.h,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.w),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Container(
-                                height: 60.h,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20.r),
-                                    color: cWhiteColor.withAlpha(80)),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 20.w,
-                                    ),
-                                    Icon(
-                                      Icons.search,
-                                      color: cWhiteColor,
-                                    ),
-                                    SizedBox(
-                                      width: 20.w,
-                                    ),
-                                    Expanded(
-                                      child: TextField(
-                                        controller: searchController,
-                                        decoration: InputDecoration(
-                                            hintText: 'Search',
-                                            hintStyle:
-                                                TextStyle(color: cWhiteColor),
-                                            border: InputBorder.none),
-                                        style: TextStyle(color: cWhiteColor),
-                                        onChanged: (value) {
-                                          setState(() {
-                                            _handleRefresh(
-                                                refresh: true, text: value);
-                                          });
-                                        },
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
                       Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 20.h, vertical: 5.w),
-                        padding: EdgeInsets.symmetric(vertical: 5.h),
-                        child: Text(
-                            'Last update: ' +
-                                "${prefs.getString(eventsTime) ?? "00-00-0000 00.00.00"}",
-                            style: TextStyle(color: cWhiteColor)),
-                        alignment: Alignment.center,
+                        height: 160.h,
+                        width: double.infinity,
                         decoration: BoxDecoration(
-                          color: cSecondColor,
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
+                            gradient: cSecondGradient,
+                            borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(30.r),
+                                bottomLeft: Radius.circular(30.r))),
+                        child: Container(),
                       ),
-                      SizedBox(
-                        height: 30.h,
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    height: 60.h,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(20.r),
+                                        color: cWhiteColor.withAlpha(80)),
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 20.w,
+                                        ),
+                                        Icon(
+                                          Icons.search,
+                                          color: cWhiteColor,
+                                        ),
+                                        SizedBox(
+                                          width: 20.w,
+                                        ),
+                                        Expanded(
+                                          child: TextField(
+                                            controller: searchController,
+                                            decoration: InputDecoration(
+                                                hintText: 'Search',
+                                                hintStyle: TextStyle(
+                                                    color: cWhiteColor),
+                                                border: InputBorder.none),
+                                            style:
+                                                TextStyle(color: cWhiteColor),
+                                            onChanged: (value) {
+                                              setState(() {
+                                                _handleRefresh(
+                                                    refresh: true, text: value);
+                                              });
+                                            },
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 20.h, vertical: 5.w),
+                            padding: EdgeInsets.symmetric(vertical: 5.h),
+                            child: Text(
+                                'Last update: ' +
+                                    "${prefs.getString(eventsTime) ?? "00-00-0000 00.00.00"}",
+                                style: TextStyle(color: cWhiteColor)),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: cFirstColor,
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                          ),
+                          Expanded(
+                              child: RefreshIndicator(
+                                  onRefresh: () async {
+                                    _handleRefresh(refresh: true);
+                                  },
+                                  child: ListView.builder(
+                                    itemCount: state.resultList.length,
+                                    physics: AlwaysScrollableScrollPhysics(
+                                        parent: BouncingScrollPhysics()),
+                                    padding: EdgeInsets.only(
+                                        bottom: 140.h, top: 20.h),
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      var events = state.resultList;
+                                      var item = events[index];
+                                      return EventItem(
+                                        onTapItem: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      EventDetailedPage.screen(
+                                                        eventModel: item,
+                                                      )));
+                                        },
+                                        event: item,
+                                        onTapEdit: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      EventFormPage.screen(
+                                                          eventModel: item)));
+                                        },
+                                        onTapDelete: () async {
+                                          var result = await showAlertText(
+                                                  context, 'Are you sure?') ??
+                                              false;
+                                          if (result) {
+                                            _eventsBloc
+                                                .add(DeleteEvent(event: item));
+                                          }
+                                        },
+                                      );
+                                    },
+                                  )))
+                        ],
                       ),
-                      Expanded(
-                          child: RefreshIndicator(
-                              onRefresh: () async {
-                                _handleRefresh(refresh: true);
-                              },
-                              child: ListView.builder(
-                                itemCount: state.resultList.length,
-                                physics: AlwaysScrollableScrollPhysics(
-                                    parent: BouncingScrollPhysics()),
-                                padding: EdgeInsets.only(bottom: 140.h),
-                                itemBuilder: (BuildContext context, int index) {
-                                  var events = state.resultList;
-                                  var item = events[index];
-                                  return EventItem(
-                                    onTapItem: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EventDetailedPage.screen(
-                                                    eventModel: item,
-                                                  )));
-                                    },
-                                    event: item,
-                                    onTapEdit: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EventFormPage.screen(
-                                                      eventModel: item)));
-                                    },
-                                    onTapDelete: () async {
-                                      var result = await showAlertText(
-                                          context, 'Are you sure?') ??
-                                          false;
-                                      if (result) {
-                                        _eventsBloc.add(DeleteEvent(event: item));
-                                      }
-
-                                    },
-                                  );
-                                },
-                              )))
                     ],
                   );
                 else {
