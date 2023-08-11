@@ -113,8 +113,8 @@ const String reserveTime = 'events_time';
 
 // versions
 String version = "app_version";
-String defaultPhone = "732443505";
-String defaultManual = "my.fergana.uz/instruction";
+String defaultPhone = "1234567";
+String defaultManual = "manual.uz";
 
 // lock number style
 
